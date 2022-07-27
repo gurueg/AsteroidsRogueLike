@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Space01.png" type="Texture" id=1]
+[ext_resource path="res://assets/PLAYER.png" type="Texture" id=2]
+[ext_resource path="res://scenes/PlayerShip.gd" type="Script" id=3]
+
+[node name="GameScene" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( -574, -296 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Background" type="Sprite" parent="Background"]
+position = Vector2( 0, 300 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="PlayerShip" type="KinematicBody2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="PlayerShip"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PlayerShip"]
+polygon = PoolVector2Array( 0, -8, -7, 2, -4, 6, 5, 6, 7, 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
